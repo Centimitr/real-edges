@@ -67,6 +67,17 @@ def z0_shortest_path(g, a, b):
     return len(path)
 
 
+# methods = [
+#     common_neighbour,
+#     adamic_adar_index,
+#     preferential_attachment,
+#     resource_allocation,
+#     jaccard_coefficient,
+#     summation_neighbours,
+#     local_path,
+#     # z0_shortest_path
+# ]
+
 methods = [
     common_neighbour,
     adamic_adar_index,
@@ -75,5 +86,5 @@ methods = [
     jaccard_coefficient,
     summation_neighbours,
     local_path,
-    z0_shortest_path
+    # z0_shortest_path
 ]

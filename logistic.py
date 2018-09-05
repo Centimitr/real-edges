@@ -12,16 +12,15 @@ import numpy as np
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import train_test_split
 
-tp_path = "scripts/tp.csv"
-pn_path = "scripts/pn.csv"
-t_path = "scripts/t_.csv"
+tp_path = "out_combined/tp.csv"
+pn_path = "out_combined/pn.csv"
+t_path = "out_combined/t_.csv"
 
 # rng = (4, 6, 14)  # 0.75505, 0.6753
 # rng = (3, 6)  # 0.77909, 0.6743
 # rng = (3, 6, 10)  # 0.78365, 0.6729
 
-# rng = (3, 6, 10, 11, 16, 17)
-# rng = (3, 6, 10, 16, 17)
+# rng = (3, 6, 10, 16)
 
 rng = (3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)
 

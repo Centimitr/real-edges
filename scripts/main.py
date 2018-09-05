@@ -7,7 +7,7 @@ pn_c = gf.Config("../train/pn_pairs_20000.csv", "pn")
 t_c = gf.Config("../train/test-public.txt", "t")
 all_c = [tp_c, pn_c, t_c]
 
-t = gf.GenerateFeatureTask(out_dir="../out", out_suffix="csv")
+t = gf.GenerateFeatureTask(out_dir="../out_single", out_suffix="csv")
 t.load_graph("udg.gpickle")
 # t.load_graph("dg.gpickle")
 
@@ -15,3 +15,4 @@ t.load_graph("udg.gpickle")
 # t.multi_load_and_output([pn_c], md.methods)
 # t.multi_load_and_output(all_c, md.methods)
 t.multi_load_and_output([pn_c], mud.methods)
+

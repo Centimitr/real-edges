@@ -7,21 +7,25 @@ def getFileNamesWithPrefix(path, prefix):
         return [n for n in names if n.startswith(prefix)]
 
 
-path = "../out"
-# prefix = "t_"
-# prefix = "tp"
-prefix = "pn"
+def combine_csv(in_path, out_path, prefix):
+    result = None
+    for i, n in enumerate(getFileNamesWithPrefix(in_path, prefix)):
+        file_path = in_path + "/" + n
+        df = pd.read_csv(file_path)
+        feature_name = list(df)[3]
+        if i == 0:
+            result = df
+            df.columns = ['0', '_source', '_sink', feature_name]
 
-result = None
-for i, n in enumerate(getFileNamesWithPrefix(path, prefix)):
-    file_path = path + "/" + n
-    df = pd.read_csv(file_path)
-    feature_name = list(df)[3]
-    if i == 0:
-        result = df
-        df.columns = ['0', '_source', '_sink', feature_name]
+        result[feature_name] = df[feature_name]
 
-    result[feature_name] = df[feature_name]
+    result.sort_index(axis=1, inplace=True)
+    result.to_csv(out_path + "/" + prefix + ".csv", index=False)
 
-result.sort_index(axis=1, inplace=True)
-result.to_csv(prefix + ".csv", index=False)
+
+def multi_combine_csv(in_path, out_path, prefices):
+    for p in prefices:
+        combine_csv(in_path, out_path, p)
+
+
+multi_combine_csv("../out_single", "../out_combined", ["pn", "tp", "t"])
