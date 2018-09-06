@@ -61,7 +61,7 @@ methods = [
     in_out_degree_a,
     in_out_degree_b,
     z1_b_to_a,
-    z2_middle,
+    # z2_middle,
 ]
 
 current = [

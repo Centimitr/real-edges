@@ -1,9 +1,19 @@
+import collections
+import itertools
+
 import networkx as nx
+
+
+def util_count_iter_items(iterable):
+    counter = itertools.count()
+    collections.deque(itertools.izip(iterable, counter), maxlen=0)
+    return next(counter)
 
 
 def common_neighbour(g, a, b):
     cn = nx.common_neighbors(g, a, b)
-    return len(list(cn))
+    # return len(list(cn))
+    return util_count_iter_items(cn)
 
 
 def adamic_adar_index(g, a, b):
@@ -79,12 +89,12 @@ def z0_shortest_path(g, a, b):
 # ]
 
 methods = [
-    common_neighbour,
     adamic_adar_index,
     preferential_attachment,
     resource_allocation,
     jaccard_coefficient,
     summation_neighbours,
+    common_neighbour,
     local_path,
     # z0_shortest_path
 ]

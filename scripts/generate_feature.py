@@ -1,3 +1,4 @@
+import sys
 import time
 
 import networkx as nx
@@ -32,10 +33,12 @@ class GenerateFeatureTask:
     def load_pairs(self, path, max_rows=None):
         if self.pair_path != path:
             self.pairs = np.genfromtxt(path, usecols=(1, 2), skip_header=1, max_rows=max_rows, delimiter="\t")
+            # self.pairs = np.genfromtxt(path, usecols=(0, 1), max_rows=max_rows, delimiter=" ")
             self.pair_path = path
 
     def load_graph(self, path):
         print("Graph: Loading")
+        print(path)
         start = time.time()
         self.graph = nx.read_gpickle(path)
         end = time.time()
@@ -54,7 +57,14 @@ class GenerateFeatureTask:
         for i, p in enumerate(pairs):
             [a_float, b_float] = p
             [a, b] = [str(int(a_float)), str(int(b_float))]
-            print("\r", "{:.0%}".format(i / total), end="\r")
+            # print("\r{:.2%}".format(float(i) / float(total)))
+            if i % 100 == 0:
+                sys.stdout.write('\r')
+                # the exact output you're looking for:
+                percent = (float(i * 100) / float(total))
+                sys.stdout.write("%.2f%% %d/%d" % (percent, i, total))
+                sys.stdout.flush()
+
             feature_value = fn(self.graph, a, b)
             rows.append([a, b, feature_value])
         p_end = time.time()
