@@ -19,10 +19,10 @@ def output_pred(path, pred):
 def read_input(rng, test=False):
     tp_path = "out_combined/tp.csv"
     pn_path = "out_combined/pn.csv"
-    t_path = "out_combined/t.csv"
+    t_path = "out_combined/t_.csv"
 
-    X1 = np.genfromtxt(tp_path, usecols=rng, skip_header=1, max_rows=16328, delimiter=",")
-    X2 = np.genfromtxt(pn_path, usecols=rng, skip_header=1, max_rows=16328, delimiter=",")
+    X1 = np.genfromtxt(tp_path, usecols=rng, skip_header=1, max_rows=999999, delimiter=",")
+    X2 = np.genfromtxt(pn_path, usecols=rng, skip_header=1, max_rows=999999, delimiter=",")
     XT = np.genfromtxt(t_path, usecols=rng, skip_header=1, delimiter=",")
 
     print(X1.shape)

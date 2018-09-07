@@ -15,7 +15,8 @@ def generate_feature_csv():
     t = gf.GenerateFeatureTask(out_dir="../out_single", out_suffix="csv")
 
     t.load_graph("udg.gpickle")
-    t.multi_load_and_output(all_c, mud.methods)
+    t.multi_load_and_output([pn_c, t_c], mud.methods)
+    t.multi_load_and_output([tp_c], [mud.common_neighbour, mud.local_path])
 
     # t.load_graph("dg.gpickle")
     # t.multi_load_and_output(all_c, md.methods)
@@ -23,7 +24,7 @@ def generate_feature_csv():
 
 def main():
     generate_feature_csv()
-    ccsv.multi_combine_csv("../out_single", "../out_combined", ["pn", "tp", "t"])
+    ccsv.multi_combine_csv("../out_single", "../out_combined", ["pn", "tp", "t_"])
     return
 
 

@@ -27,17 +27,20 @@ def multi_combine_csv(in_path, out_path, prefices):
     for p in prefices:
         combine_csv(in_path, out_path, p)
 
-# def scale(path, out_path):
-#     names = getFileNamesWithPrefix(path, "")
-#     scaler = StandardScaler()
-#     for n in names:
-#         file_path = path + "/" + n
-#         df = pd.read_csv(file_path)
-#         headings = list(df)
-#         print(headings[3:])
-#         for h in headings[3:]:
-#             df[h] = scaler.fit_transform(df[h], scaler.fit(df[h]))
-#             print()
-#         df.to_csv(out_path + "/" + n, index=False)
+    # def scale(path, out_path):
+    #     names = getFileNamesWithPrefix(path, "")
+    #     scaler = StandardScaler()
+    #     for n in names:
+    #         file_path = path + "/" + n
+    #         df = pd.read_csv(file_path)
+    #         headings = list(df)
+    #         print(headings[3:])
+    #         for h in headings[3:]:
+    #             df[h] = scaler.fit_transform(df[h], scaler.fit(df[h]))
+    #             print()
+    #         df.to_csv(out_path + "/" + n, index=False)
 
-# multi_combine_csv("../out_single", "../out_combined", ["pn", "tp", "t"])
+    # multi_combine_csv("../out_single", "../out_combined", ["pn", "tp", "t"])
+
+
+# multi_combine_csv("../out_single", "../out_combined", ["pn", "tp", "t_"])

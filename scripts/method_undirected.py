@@ -12,8 +12,8 @@ def util_count_iter_items(iterable):
 
 def common_neighbour(g, a, b):
     cn = nx.common_neighbors(g, a, b)
-    # return len(list(cn))
-    return util_count_iter_items(cn)
+    return len(list(cn))
+    # return util_count_iter_items(cn)
 
 
 def adamic_adar_index(g, a, b):
